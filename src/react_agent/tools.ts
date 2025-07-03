@@ -78,7 +78,10 @@ const stateRegisterTool = tool(
       return data;
     } catch (error) {
       console.error("Error during fetch:", error);
-      return "Network or parsing ERROR";
+      if (error instanceof Error) {
+        return `Error during fetch: ${error.message}`;
+      }
+      return "An unknown error occurred during fetch.";
     }
   },
   {

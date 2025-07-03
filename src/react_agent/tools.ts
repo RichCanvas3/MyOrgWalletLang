@@ -4,7 +4,6 @@
  */
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
 import { DynamicStructuredTool, tool } from "@langchain/core/tools";
-import { link } from "fs";
 import { z } from "zod";
 /**
  * Tavily search tool configuration
@@ -65,7 +64,7 @@ const stateRegisterTool = tool(
     try {
     
       const response = await fetch(
-        `http://127.0.0.1:8501/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
+        `https://d4dd-205-170-56-18.ngrok-free.app/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
       );
 
       if (!response.ok) {
@@ -98,7 +97,7 @@ const DomainVerificationSchema = z.object({
 const DomainVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `http://127.0.0.1:8501/creds/good-standing/domain?domain=${input.domain}`
+      `https://d4dd-205-170-56-18.ngrok-free.app/creds/good-standing/domain?domain=${input.domain}`
     );
     const data = await response.json();
     return data;
@@ -118,7 +117,7 @@ const websiteVerificationSchema = z.object({
 const websiteVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `http://127.0.0.1:8501/creds/good-standing/website?website=${input.website}`
+      `https://d4dd-205-170-56-18.ngrok-free.app/creds/good-standing/website?website=${input.website}`
     );
     const data = await response.json();
     return data;
@@ -139,7 +138,7 @@ const emailVerificationSchema = z.object({
 const emailVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `http://127.0.0.1:8501/creds/good-standing/domain?domain=${input.email}`
+      `https://d4dd-205-170-56-18.ngrok-free.app/creds/good-standing/domain?domain=${input.email}`
     );
     const data = await response.json();
     return data;
@@ -192,4 +191,13 @@ const linkedinVerificationTool = tool(
  * See https://js.langchain.com/docs/how_to/custom_tools/#tool-function for more information.
  */
 
-export const TOOLS = [searchTavily, adderTool, stateRegisterTool, websiteVerificationTool, DomainVerificationTool, emailVerificationTool, companyNameTool, linkedinVerificationTool];
+export const TOOLS = [
+  searchTavily,
+  adderTool, 
+  stateRegisterTool, 
+  websiteVerificationTool, 
+  DomainVerificationTool, 
+  emailVerificationTool, 
+  companyNameTool, 
+  linkedinVerificationTool
+];

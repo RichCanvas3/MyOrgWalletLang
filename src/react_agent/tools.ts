@@ -63,7 +63,7 @@ const StateRegisterSchema = z.object({
 const stateRegisterTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `http://127.0.0.1:8501/creds/good-standing/company?company=${companyName}&state=${input.state}`
+      `http://127.0.0.1:8501/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
     );
     try {
       const data = await response.json();

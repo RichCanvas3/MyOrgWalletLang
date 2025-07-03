@@ -62,15 +62,23 @@ const StateRegisterSchema = z.object({
 
 const stateRegisterTool = tool(
   async (input): Promise<string> => {
-    const response = await fetch(
-      `http://127.0.0.1:8501/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
-    );
     try {
+    
+      const response = await fetch(
+        `http://127.0.0.1:8501/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
+      );
+
+      if (!response.ok) {
+        const text = await response.text();
+        console.error("Fetch failed:", response.status, text);
+        return `Fetch failed: ${response.status} - ${text}`;
+      }
+
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error("Error parsing JSON:", error);
-      return "Error parsing JSON";
+      console.error("Error during fetch:", error);
+      return "Network or parsing ERROR";
     }
   },
   {

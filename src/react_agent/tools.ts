@@ -64,7 +64,7 @@ const stateRegisterTool = tool(
     try {
     
       const response = await fetch(
-        `http://0eec-73-169-47-136.ngrok-free.app/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
+        `https://9f3f81a09770.ngrok-free.app/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
       );
 
       if (!response.ok) {
@@ -97,7 +97,7 @@ const DomainVerificationSchema = z.object({
 const DomainVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `http://0eec-73-169-47-136.ngrok-free.app/creds/good-standing/domain?domain=${input.domain}`
+      `https://9f3f81a09770.ngrok-free.app/creds/good-standing/domain?domain=${input.domain}`
     );
     const data = await response.json();
     return data;
@@ -117,7 +117,7 @@ const websiteVerificationSchema = z.object({
 const websiteVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `http://0eec-73-169-47-136.ngrok-free.app/creds/good-standing/website?website=${input.website}`
+      `https://9f3f81a09770.ngrok-free.app/creds/good-standing/website?website=${input.website}`
     );
     const data = await response.json();
     return data;
@@ -138,7 +138,7 @@ const emailVerificationSchema = z.object({
 const emailVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `http://0eec-73-169-47-136.ngrok-free.app/creds/good-standing/domain?domain=${input.email}`
+      `https://9f3f81a09770.ngrok-free.app/creds/good-standing/domain?domain=${input.email}`
     );
     const data = await response.json();
     return data;

@@ -9,6 +9,9 @@ import { z } from "zod";
  * Tavily search tool configuration
  * This tool allows the agent to perform web searches using the Tavily API.
  */
+
+const ngrok_url = 'https://a9597ee7f998.ngrok-free.app'
+
 const tavilySearch = new TavilySearchResults({
   maxResults: 3,
 });
@@ -64,7 +67,7 @@ const stateRegisterTool = tool(
     try {
     
       const response = await fetch(
-        `https://9f3f81a09770.ngrok-free.app/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
+        `${ngrok_url}/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
       );
 
       if (!response.ok) {
@@ -97,7 +100,7 @@ const DomainVerificationSchema = z.object({
 const DomainVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `https://9f3f81a09770.ngrok-free.app/creds/good-standing/domain?domain=${input.domain}`
+      `${ngrok_url}/creds/good-standing/domain?domain=${input.domain}`
     );
     const data = await response.json();
     return data;
@@ -117,7 +120,7 @@ const websiteVerificationSchema = z.object({
 const websiteVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `https://9f3f81a09770.ngrok-free.app/creds/good-standing/website?website=${input.website}`
+      `${ngrok_url}/creds/good-standing/website?website=${input.website}`
     );
     const data = await response.json();
     return data;
@@ -138,7 +141,7 @@ const emailVerificationSchema = z.object({
 const emailVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(
-      `https://9f3f81a09770.ngrok-free.app/creds/good-standing/domain?domain=${input.email}`
+      `${ngrok_url}/creds/good-standing/domain?domain=${input.email}`
     );
     const data = await response.json();
     return data;

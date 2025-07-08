@@ -153,13 +153,6 @@ const emailVerificationSchema = z.object({
   state: z.string(),
 });
 
-
-const emailVerificationSchema = z.object({
-  email: z.string(),
-  companyname: z.string(),
-  state: z.string(),
-});
-
 const emailVerificationTool = tool(
   async (input): Promise<string> => {
     const response = await fetch(

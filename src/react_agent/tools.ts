@@ -198,7 +198,7 @@ const linkedinVerificationSchema = z.object({
 const linkedinVerificationTool = tool(
   async (input): Promise<string> => {
     const response = input.linkedin;
-    return response;
+    return 'linkedin';
   },
   {
     name: "linkedin_verification",

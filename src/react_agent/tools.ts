@@ -119,11 +119,26 @@ const websiteVerificationSchema = z.object({
 
 const websiteVerificationTool = tool(
   async (input): Promise<string> => {
-    const response = await fetch(
-      `${ngrok_url}/creds/good-standing/website?website=${input.website}`
-    );
-    const data = await response.json();
-    return data;
+    try {  
+      const response = await fetch(
+        `${ngrok_url}/creds/good-standing/website?website=${input.website}`
+      );
+      
+      if (!response.ok) {
+        const text = await response.text();
+        console.error("Fetch failed:", response.status, text);
+        return `Fetch failed: ${response.status} - ${text}`;
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error during fetch:", error);
+      if (error instanceof Error) {
+        return `Error during fetch: ${error.message}`;
+      }
+      return "An unknown error occurred during fetch.";
+    }
   },
   {
     name: "website_verification",
@@ -131,6 +146,13 @@ const websiteVerificationTool = tool(
     schema: websiteVerificationSchema,
   }
 );
+
+const emailVerificationSchema = z.object({
+  email: z.string(),
+  companyname: z.string(),
+  state: z.string(),
+});
+
 
 const emailVerificationSchema = z.object({
   email: z.string(),

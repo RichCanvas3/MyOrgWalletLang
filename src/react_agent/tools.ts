@@ -199,6 +199,22 @@ const linkedinVerificationTool = tool(
   }
 )
 
+const ensVerificationSchema = z.object({
+  domain: z.string()
+});
+
+const ensVerificationTool = tool(
+  async (input): Promise<string> => {
+    const response = input.domain;
+    return response;
+  },
+  {
+    name: "ens_verification",
+    description: 'verify the existence and ownership of an ens domain',
+    schema: ensVerificationSchema,
+  }
+)
+
 /**
  * Export an array of all available tools
  * Add new tools to this array to make them available to the agent
@@ -216,6 +232,7 @@ export const TOOLS = [
   DomainVerificationTool, 
   emailVerificationTool, 
   companyNameTool, 
-  linkedinVerificationTool
+  linkedinVerificationTool,
+  ensVerificationTool,
 ];
 

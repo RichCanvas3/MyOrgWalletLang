@@ -10,7 +10,7 @@ import { z } from "zod";
  * This tool allows the agent to perform web searches using the Tavily API.
  */
 
-const ngrok_url = 'https://d2419bebe626.ngrok-free.app'
+const ngrok_url = 'https://eb38254920ea.ngrok-free.app'
 const tavilySearch = new TavilySearchResults({
   maxResults: 3,
 });

@@ -9,7 +9,8 @@ const ETHRegistrarControllerAddress = '0xfb3cE5D01e0f33f41DbB39035dB9745962F1f96
 
 // Importing User Keys from the ENV File
 const alchemyKey = process.env.VITE_ALCHEMY_API_KEY
-const walletPrivateKey: string = <string>process.env.VITE_WALLET_PRIVATE_KEY
+//const walletPrivateKey: string = <string>process.env.VITE_WALLET_PRIVATE_KEY
+const walletPrivateKey: string = "000000000000000000000"
 
 // Creating a Wallet, Provider, and Signer
 const provider = new ethers.JsonRpcProvider(`https://eth-sepolia.g.alchemy.com/v2/${alchemyKey}`)

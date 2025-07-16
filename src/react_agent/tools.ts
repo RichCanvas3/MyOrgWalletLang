@@ -5,13 +5,14 @@
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
 import { DynamicStructuredTool, tool } from "@langchain/core/tools";
 import { z } from "zod";
-import { createEnsSepoliaDeployment } from "./sepolia_ENS.js";
+import { createEnsSepoliaDeploymentWithMetaMask } from "./sepolia_ENS.js";
 /**
  * Tavily search tool configuration
  * This tool allows the agent to perform web searches using the Tavily API.
  */
 
-const ngrok_url = 'https://45ec61eb830f.ngrok-free.app'
+const ngrok_url = 'https://5c6ec9b92527.ngrok-free.app'
+
 const tavilySearch = new TavilySearchResults({
   maxResults: 3,
 });
@@ -207,7 +208,7 @@ const ensVerificationSchema = z.object({
 const ensRegistrationTool = tool(
   async (input): Promise<string> => {
     const response = input.domain;
-    const rslt = await createEnsSepoliaDeployment(response)
+    const rslt = await createEnsSepoliaDeploymentWithMetaMask(response)
     return rslt;
   },
   {

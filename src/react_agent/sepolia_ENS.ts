@@ -45,7 +45,7 @@ export async function createEnsSepoliaDeploymentWithMetaMask(ensName: string) {
   console.log('Duration: ', duration)
   console.log('Secret: ', secret)
   console.log(`Creating domain name for ${name}.eth...`)
-  createName()
+  const response = createName()
   async function createName() {
     const registrationObject = {
       label: name,
@@ -82,6 +82,7 @@ export async function createEnsSepoliaDeploymentWithMetaMask(ensName: string) {
     console.log(`See ENS profile here: https://sepolia.app.ens.domains/${name}.eth`)
     console.log(`See ENS profile here: https://sepolia.app.ens.domains/${name}.eth`)
   }
+  return response
 }
 
 async function connectToMetaMask() {

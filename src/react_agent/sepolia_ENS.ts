@@ -26,8 +26,7 @@ const publicResolver = new ethers.Contract(
 )
 */
 
-export async function createEnsSepoliaDeploymentWithMetaMask(ensName: string) {
-  const mmSigner = await connectToMetaMask()
+export async function createEnsSepoliaDeploymentWithMetaMask(ensName: string, mmSigner) {
   const ethRegistrarController = new ethers.Contract(
     ETHRegistrarControllerAddress,
     ETHRegistrarControllerABI.abi,
@@ -38,7 +37,7 @@ export async function createEnsSepoliaDeploymentWithMetaMask(ensName: string) {
     return console.log('This name does not include ".eth". which is necessary. Please add and try again.')
   }
   console.log('Registering ENS domain name...')
-  const name = getLabel(ensName)
+  const name = ensName
   const duration = 31536000 // 60 * 60 * 24 * 365
   const secret = hexlify(ethers.randomBytes(32))
   console.log('Name: ', name)
@@ -83,18 +82,5 @@ export async function createEnsSepoliaDeploymentWithMetaMask(ensName: string) {
     console.log(`See ENS profile here: https://sepolia.app.ens.domains/${name}.eth`)
   }
   return response
-}
-
-async function connectToMetaMask() {
-  if (typeof window.ethereum === 'undefined') {
-    throw new Error('MetaMask is not installed.')
-  }
-  await window.ethereum.request({
-    method: 'eth_requestAccounts'
-  });
-  const provider = new ethers.BrowserProvider(window.ethereum)
-  const signer = await provider.getSigner()
-  console.log('Returning Signer: ', signer)
-  return signer
 }
 

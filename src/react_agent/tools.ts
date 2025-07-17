@@ -203,7 +203,7 @@ const linkedinVerificationTool = tool(
 
 const ensVerificationSchema = z.object({
   domain: z.string(),
-  signer: 
+  signer: z.string(),
 });
 
 const ensRegistrationTool = tool(

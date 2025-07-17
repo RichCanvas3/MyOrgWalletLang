@@ -5,8 +5,8 @@
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
 import { DynamicStructuredTool, tool } from "@langchain/core/tools";
 import { z } from "zod";
-import { createEnsSepoliaDeploymentWithMetaMask } from "./sepolia_ENS.js";
-/**
+
+/*
  * Tavily search tool configuration
  * This tool allows the agent to perform web searches using the Tavily API.
  */
@@ -203,15 +203,12 @@ const linkedinVerificationTool = tool(
 
 const ensVerificationSchema = z.object({
   domain: z.string(),
-  signer: z.string(),
 });
 
 const ensRegistrationTool = tool(
   async (input): Promise<string> => {
     const ens_domain = input.domain;
-    const ens_signer = input.signer;
-    const rslt = await createEnsSepoliaDeploymentWithMetaMask(ens_domain, ens_signer);
-    return rslt;
+    return 'ens_register';
   },
   {
     name: "ens_registration",

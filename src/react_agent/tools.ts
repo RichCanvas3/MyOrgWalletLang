@@ -202,13 +202,15 @@ const linkedinVerificationTool = tool(
 )
 
 const ensVerificationSchema = z.object({
-  domain: z.string()
+  domain: z.string(),
+  signer: 
 });
 
 const ensRegistrationTool = tool(
   async (input): Promise<string> => {
-    const response = input.domain;
-    const rslt = await createEnsSepoliaDeploymentWithMetaMask(response)
+    const ens_domain = input.domain;
+    const ens_signer = input.signer;
+    const rslt = await createEnsSepoliaDeploymentWithMetaMask(ens_domain, ens_signer);
     return rslt;
   },
   {

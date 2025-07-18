@@ -217,7 +217,7 @@ const ensRegistrationTool = tool(
   }
 )
 
-const init_infoSchmea = z.object({
+const init_infoSchema = z.object({
   companyname: z.string(),
 });
 

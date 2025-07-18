@@ -217,6 +217,22 @@ const ensRegistrationTool = tool(
   }
 )
 
+const init_infoSchmea = z.object({
+  companyname: z.string(),
+});
+
+const init_infoTool = tool(
+  async (input): Promise<string> => {
+    companyName = input.companyname;
+    return 'init done'
+  },
+  {
+    name: 'initialize_attestation',
+    descrition: "used with a batch of attestation data from initilization to aquire context of what user has attested to and how to proceed with the conversation",
+    schema: init_infoSchema,
+  }
+)
+
 /**
  * Export an array of all available tools
  * Add new tools to this array to make them available to the agent
@@ -232,8 +248,8 @@ export const TOOLS = [
   stateRegisterTool, 
   websiteVerificationTool, 
   DomainVerificationTool, 
-  emailVerificationTool, 
-  companyNameTool, 
+  emailVerificationTool,  
   linkedinVerificationTool,
   ensRegistrationTool,
+  init_infoTool
 ];

@@ -65,27 +65,7 @@ const StateRegisterSchema = z.object({
 
 const stateRegisterTool = tool(
   async (input): Promise<string> => {
-    try {
-    
-      const response = await fetch(
-        `${ngrok_url}/creds/good-standing/company?company=${input.companyname}&state=${input.state}`
-      );
-
-      if (!response.ok) {
-        const text = await response.text();
-        console.error("Fetch failed:", response.status, text);
-        return `Fetch failed: ${response.status} - ${text}`;
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error during fetch:", error);
-      if (error instanceof Error) {
-        return `Error during fetch: ${error.message}`;
-      }
-      return "An unknown error occurred during fetch.";
-    }
+    return input.companyname, input.state;
   },
   {
     name: "state_register",

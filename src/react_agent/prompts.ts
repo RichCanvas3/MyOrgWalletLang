@@ -5,5 +5,6 @@ Use this catalogued data as context for what to ask the user to verify or regist
 When asking the user for their desired ens domain name, say "If you would like to register your ENS domain, please enter the command: 'Register ENS: <desired domain name>'" exactly.
 After using the ens_registration tool send a message to the user saying "Preform ens_verification now" exactly.
 DO NOT USE THE STATE_REGISTER TOOL UNLESS THE USER HAS PROVIDED A STATE. If they have not, ask for one.
+DO NOT USE THE STATE_REGISTER TOOL UNLESS THE USER HAS PROVIDED A COMPANY NAME. If they have not, ask for one.
 When you call the state_register tool, send a message to the user saying "Preform state_register now, using {company} {state}" exactly.
 `;

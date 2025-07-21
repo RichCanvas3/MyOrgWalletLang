@@ -53,19 +53,12 @@ const adderTool = tool(
 
 const StateRegisterSchema = z.object({
   companyname: z.string(),
-  idnumer: z.string(),
-  status: z.string(),
-  form: z.string(),
-  formationdate: z.string(),
   state: z.string(),
-  locationaddress: z.string(),
-  website: z.string(),
-  description: z.string()
 });
 
 const stateRegisterTool = tool(
   async (input): Promise<string> => {
-    return input.companyname, input.state;
+    return config.company, input.state;
   },
   {
     name: "state_register",

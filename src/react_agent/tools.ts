@@ -58,7 +58,7 @@ const StateRegisterSchema = z.object({
 
 const stateRegisterTool = tool(
   async (input): Promise<string> => {
-    return config.company, input.state;
+    return config.name, input.state;
   },
   {
     name: "state_register",

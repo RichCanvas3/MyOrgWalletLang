@@ -17,7 +17,7 @@ const tavilySearch = new TavilySearchResults({
   maxResults: 3,
 });
 
-var companyName = "";
+
 
 const searchTavily = new DynamicStructuredTool({
   name: "tavily_search_results_json",

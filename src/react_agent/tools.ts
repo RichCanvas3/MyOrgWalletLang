@@ -192,6 +192,21 @@ const shopifyTool = tool(
   }
 )
 
+const xSchema = z.object({
+  x: z.string(),
+});
+
+const xTool = tool(
+  async (input): Promise<string> => {
+    return 'x_verification';
+  },
+  {
+    name: "x_verification",
+    description: 'verify x and/or twitter',
+    schema: xSchema,
+  }
+)
+
 /**
  * Export an array of all available tools
  * Add new tools to this array to make them available to the agent
@@ -211,5 +226,6 @@ export const TOOLS = [
   linkedinVerificationTool,
   ensRegistrationTool,
   shopifyTool,
-  insuranceTool
+  insuranceTool,
+  xTool
 ];

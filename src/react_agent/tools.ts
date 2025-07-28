@@ -73,11 +73,7 @@ const DomainVerificationSchema = z.object({
 
 const DomainVerificationTool = tool(
   async (input): Promise<string> => {
-    const response = await fetch(
-      `${ngrok_url}/creds/good-standing/domain?domain=${input.domain}`
-    );
-    const data = await response.json();
-    return data;
+    return 'domain_verification';
   },
   {
     name: "domain_verification",
@@ -93,25 +89,7 @@ const websiteVerificationSchema = z.object({
 
 const websiteVerificationTool = tool(
   async (input): Promise<string> => {
-    try {  
-      const response = await fetch(
-        `${ngrok_url}/creds/good-standing/website?website=${input.website}`
-      );
-      
-      if (!response.ok) {
-        const text = await response.text();
-        console.error("Fetch failed:", response.status, text);
-        return `Fetch failed: ${response.status} - ${text}`;
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error during fetch:", error);
-      if (error instanceof Error) {
-        return `Error during fetch: ${error.message}`;
-      }
-      return "An unknown error occurred during fetch.";
+    return 'website_verification'
     }
   },
   {
@@ -129,11 +107,7 @@ const emailVerificationSchema = z.object({
 
 const emailVerificationTool = tool(
   async (input): Promise<string> => {
-    const response = await fetch(
-      `${ngrok_url}/creds/good-standing/domain?domain=${input.email}`
-    );
-    const data = await response.json();
-    return data;
+    return 'email_verification';
   },
   {
     name: "email_verification",
@@ -164,8 +138,7 @@ const linkedinVerificationSchema = z.object({
 
 const linkedinVerificationTool = tool(
   async (input): Promise<string> => {
-    const response = input.linkedin;
-    return 'linkedin';
+    return 'linkedin_verification';
   },
   {
     name: "linkedin_verification",
@@ -180,8 +153,7 @@ const ensVerificationSchema = z.object({
 
 const ensRegistrationTool = tool(
   async (input): Promise<string> => {
-    const ens_domain = input.domain;
-    return 'ens_register';
+    return 'ens_verification';
   },
   {
     name: "ens_registration",
@@ -190,19 +162,33 @@ const ensRegistrationTool = tool(
   }
 )
 
-const init_infoSchema = z.object({
-  companyname: z.string(),
+const insuranceSchema = z.object({
+  insurance: z.string(),
 });
 
-const init_infoTool = tool(
+const insuranceTool = tool(
   async (input): Promise<string> => {
-    companyName = input.companyname;
-    return 'init done'
+    return 'insurance_verification';
   },
   {
-    name: 'initialize_attestation',
-    descrition: "used with a batch of attestation data from initilization to aquire context of what user has attested to and how to proceed with the conversation",
-    schema: init_infoSchema,
+    name: "insurance_verifcation",
+    description: 'verify insurance',
+    schema: insuranceSchema,
+  }
+)
+
+const shopifySchema = z.object({
+  shopify: z.string(),
+});
+
+const shopifyTool = tool(
+  async (input): Promise<string> => {
+    return 'shopify_verification';
+  },
+  {
+    name: "shopify_verification",
+    description: 'verify shopify',
+    schema: shopifySchema,
   }
 )
 
@@ -224,5 +210,6 @@ export const TOOLS = [
   emailVerificationTool,  
   linkedinVerificationTool,
   ensRegistrationTool,
-  init_infoTool
+  shopifyTool,
+  insuranceTool
 ];

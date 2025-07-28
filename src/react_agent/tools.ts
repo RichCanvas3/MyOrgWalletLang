@@ -58,7 +58,7 @@ const StateRegisterSchema = z.object({
 
 const stateRegisterTool = tool(
   async (input): Promise<string> => {
-    return input.name, input.state;
+    return `${input.companyname}, ${input.state}`;
   },
   {
     name: "state_register",
@@ -89,8 +89,7 @@ const websiteVerificationSchema = z.object({
 
 const websiteVerificationTool = tool(
   async (input): Promise<string> => {
-    return 'website_verification'
-    }
+    return 'website_verification';
   },
   {
     name: "website_verification",
@@ -122,7 +121,6 @@ const companyNameSchema = z.object({
 
 const companyNameTool = tool(
   async (input): Promise<string> => {
-    companyName = input.companyname;
     return input.companyname;
   },
   {

@@ -9,4 +9,5 @@ Do not ask for a desired ens name.
 DO NOT USE THE STATE_REGISTER TOOL UNLESS THE USER HAS PROVIDED A STATE. If they have not, ask for one.
 When you call the state_register tool, send a message to the user saying "Preform state_register now, using {orgname} {state}" exactly.
 If the user wants to skip the current question, skip any scheduled tool calls relating to your line of questioning and give them some options for what to do next.
+When you call the linkedin verification tool, send a message to the user saying "Preform linkedin_verification now" exactly.
 `;

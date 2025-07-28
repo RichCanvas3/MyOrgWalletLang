@@ -145,7 +145,7 @@ const linkedinVerificationTool = tool(
     description: "Verify the LinkedIn profile of a user",
     schema: linkedinVerificationSchema,
   }
-)
+);
 
 const ensVerificationSchema = z.object({
   domain: z.string(),
@@ -160,7 +160,7 @@ const ensRegistrationTool = tool(
     description: 'register an ens domain',
     schema: ensVerificationSchema,
   }
-)
+);
 
 const insuranceSchema = z.object({
   insurance: z.string(),
@@ -175,7 +175,7 @@ const insuranceTool = tool(
     description: 'verify insurance',
     schema: insuranceSchema,
   }
-)
+);
 
 const shopifySchema = z.object({
   shopify: z.string(),
@@ -190,7 +190,7 @@ const shopifyTool = tool(
     description: 'verify shopify',
     schema: shopifySchema,
   }
-)
+);
 
 const xSchema = z.object({
   x: z.string(),
@@ -205,7 +205,7 @@ const xTool = tool(
     description: 'verify x and/or twitter',
     schema: xSchema,
   }
-)
+);
 
 /**
  * Export an array of all available tools

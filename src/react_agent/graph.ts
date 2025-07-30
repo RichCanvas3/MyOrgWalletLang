@@ -50,42 +50,6 @@ async function loadUserAttestations(userMessage: string): Promise<any> {
     // Replace this with your actual database query
     //
     // SCENARIO 1: All three core attestations present (should say "What else can I help you with today?")
-    return {
-      state_registration: {
-        verified: true,
-        data: {
-          company_name: "Chipotle",
-          state: "California",
-          registration_date: "2024-01-15",
-          status: "active"
-        }
-      },
-      ens_domain: {
-        verified: true,
-        data: {
-          domain: "chipotle.eth",
-          registration_date: "2024-02-01",
-          status: "active"
-        }
-      },
-      linkedin_verification: {
-        verified: true,
-        data: {
-          profile_url: "https://linkedin.com/in/chipotle",
-          verification_date: "2024-01-20",
-          status: "verified"
-        }
-      },
-      shopify_verification: null,
-      insurance_verification: null,
-      x_verification: null,
-      domain_verification: null,
-      website_verification: null,
-      email_verification: null,
-      // Add other attestation types as needed
-    };
-
-    // SCENARIO 2: Missing some core attestations (uncomment to test)
     // return {
     //   state_registration: {
     //     verified: true,
@@ -96,15 +60,44 @@ async function loadUserAttestations(userMessage: string): Promise<any> {
     //       status: "active"
     //     }
     //   },
-    //   ens_domain: null, // Missing ENS
-    //   linkedin_verification: null, // Missing LinkedIn
+    //   ens_domain: {
+    //     verified: true,
+    //     data: {
+    //       domain: "chipotle.eth",
+    //       registration_date: "2024-02-01",
+    //       status: "active"
+    //     }
+    //   },
+    //   linkedin_verification: {
+    //     verified: true,
+    //     data: {
+    //       profile_url: "https://linkedin.com/in/chipotle",
+    //       verification_date: "2024-01-20",
+    //       status: "verified"
+    //     }
+    //   },
     //   shopify_verification: null,
     //   insurance_verification: null,
     //   x_verification: null,
     //   domain_verification: null,
     //   website_verification: null,
     //   email_verification: null,
+    //   // Add other attestation types as needed
     // };
+
+    // SCENARIO 2: Missing all core attestations (current reality - should ask about them)
+    return {
+      state_registration: null, // Missing state registration
+      ens_domain: null, // Missing ENS
+      linkedin_verification: null, // Missing LinkedIn
+      shopify_verification: null,
+      insurance_verification: null,
+      x_verification: null,
+      domain_verification: null,
+      website_verification: null,
+      email_verification: null,
+      // Add other attestation types as needed
+    };
   } catch (error) {
     console.error('Error loading attestations:', error);
     // Return empty attestations on error to prevent blocking

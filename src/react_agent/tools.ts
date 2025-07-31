@@ -205,6 +205,21 @@ const xTool = tool(
   }
 );
 
+const didSchema = z.object({
+  did: z.string(),
+});
+
+const didTool = tool(
+  async (input): Promise<string> => {
+    return 'x_verification';
+  },
+  {
+    name: "did_creation",
+    description: 'create a web did',
+    schema: didSchema,
+  }
+);
+
 /**
  * Export an array of all available tools
  * Add new tools to this array to make them available to the agent
@@ -225,5 +240,6 @@ export const TOOLS = [
   ensRegistrationTool,
   shopifyTool,
   insuranceTool,
-  xTool
+  xTool,
+  didTool
 ];

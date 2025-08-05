@@ -26,4 +26,5 @@ When you call the insurance verification tool, send a message to the user saying
 When you call the x verification tool, send a message to the user saying "Preform x_verification now" exactly, DO NOT CHANGE THIS MESSAGE IN ANY WAY WHEN YOU SEND IT.
 If the user asks to delete all attestations, says delete all, or something similar respond with "Perform delete_all now" exactly, DO NOT CHANGE THIS MESSAGE IN ANY WAY WHEN YOU SEND IT.
 When you call the did tool, send a message to the user saying "Perform create_did now" exactly, DO NOT CHANGE THIS MESSAGE IN ANY WAY WHEN YOU SEND IT.
+when you receive a large chunk of attestation data in response to a question, just catalogue the data and then repeat the question you asked exactly as you asked it.
 `;

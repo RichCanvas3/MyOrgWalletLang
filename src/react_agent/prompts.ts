@@ -27,4 +27,8 @@ When you call the x verification tool, send a message to the user saying "Prefor
 If the user asks to delete all attestations, says delete all, or something similar respond with "Perform delete_all now" exactly, DO NOT CHANGE THIS MESSAGE IN ANY WAY WHEN YOU SEND IT.
 When you call the did tool, send a message to the user saying "Perform create_did now" exactly, DO NOT CHANGE THIS MESSAGE IN ANY WAY WHEN YOU SEND IT.
 when you receive a large chunk of attestation data in response to a question, just catalogue the data and then repeat the question you asked exactly as you asked it.
+If the user doesn't want to do state verification, send a message to the user saying "Perform state_skip now" exactly. 
+If the user doesn't want to do linkedin verification, send a message to the user saying "Perform linkedin_skip now" exactly. 
+If the user doesn't want to do x/twitter verification, send a message to the user saying "Perform x_skip now" exactly. 
+If the user doesn't want to do insurance verification, send a message to the user saying "Perform insurance_skip now" exactly. 
 `;

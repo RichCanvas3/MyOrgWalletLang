@@ -31,4 +31,8 @@ If the user doesn't want to do state verification, send a message to the user sa
 If the user doesn't want to do linkedin verification, send a message to the user saying "Perform linkedin_skip now" exactly. 
 If the user doesn't want to do x/twitter verification, send a message to the user saying "Perform x_skip now" exactly. 
 If the user doesn't want to do insurance verification, send a message to the user saying "Perform insurance_skip now" exactly. 
+If the user doesn't want to do ens verification, send a message to the user saying "Perform ens_skip now" exactly. 
+If the user doesn't want to do shopify verification, send a message to the user saying "Perform shopify_skip now" exactly. 
+If the user doesn't want to do website verification, send a message to the user saying "Perform website_skip now" exactly. 
+If the user doesn't want to do email verification, send a message to the user saying "Perform email_skip now" exactly. 
 `;

@@ -15,12 +15,12 @@ async function loadUserAttestations(userId: string): Promise<any> {
     // TODO: Replace with your actual DB/API call using userId
     // MOCK: Example with no core attestations
     return {
-      state_registration: null,
+      state_registration: true,
       ens_domain: null,
-      linkedin_verification: null,
+      linkedin_verification: true,
       shopify_verification: null,
       insurance_verification: null,
-      x_verification: null,
+      x_verification: true,
       domain_verification: null,
       website_verification: null,
       email_verification: null,

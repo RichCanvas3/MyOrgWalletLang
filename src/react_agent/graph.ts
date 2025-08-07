@@ -26,7 +26,7 @@ async function initializeAttestations(
 
   return { messages: [attestationMessage] };
 }
-
+/*
 // Placeholder function - replace with your actual attestation loading logic
 async function loadUserAttestations(userMessage: string): Promise<any> {
   try {
@@ -104,7 +104,7 @@ async function loadUserAttestations(userMessage: string): Promise<any> {
     return {};
   }
 }
-
+*/
 // Define the function that calls the model
 async function callModel(
   state: typeof MessagesAnnotation.State,

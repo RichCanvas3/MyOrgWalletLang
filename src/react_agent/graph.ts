@@ -11,19 +11,50 @@ import { loadChatModel } from "./utils.js";
 
 // Utility: Load attestations from DB or API
 async function loadUserAttestations(userId: string): Promise<any> {
+  let state_registration = null;
+  let ens = null;
+  let linkedin = null;
+  let x = null;
+  let insurance = null;
+  let website = null;
+  let shopify = null;
+  let email = null;
+  let domain = null;
   try {
+    const entities:any[] = []//insert api call here
+    for (const entity of entities) {
+      if (entity.name == "domain(org)") {
+        domain = true
+      } else if (entity.name == "ens(org)") {
+        ens = true
+      } else if (entity.name == 'linkedin(indiv)') {
+        linkedin = true
+      } else if (entity.name == 'x(indiv)') {
+        x = true
+      } else if (entity.name == 'insurance(org)') {
+        insurance = true
+      } else if (entity.name == 'website(org)') {
+        website = true
+      } else if (entity.name == 'shopify(org)') {
+        shopify = true
+      } else if (entity.name == 'email(indiv)') {
+        email = true
+      } else if (entity.name == 'state-registration(org)') {
+        state_registration = true
+      }
+    }
     // TODO: Replace with your actual DB/API call using userId
     // MOCK: Example with no core attestations
     return {
-      state_registration: true,
-      ens_domain: null,
-      linkedin_verification: true,
-      shopify_verification: null,
-      insurance_verification: null,
-      x_verification: true,
-      domain_verification: null,
-      website_verification: null,
-      email_verification: null,
+      state_registration: state_registration,
+      ens_domain: ens,
+      linkedin_verification: linkedin,
+      shopify_verification: shopify,
+      insurance_verification: insurance,
+      x_verification: x,
+      domain_verification: domain,
+      website_verification: website,
+      email_verification: email,
     };
   } catch (err) {
     console.error("Error loading attestations:", err);

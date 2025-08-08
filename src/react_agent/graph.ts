@@ -8,7 +8,7 @@ import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { ConfigurationSchema, ensureConfiguration } from "./configuration.js";
 import { TOOLS } from "./tools.js";
 import { loadChatModel } from "./utils.js";
-
+/*
 // Utility: Load attestations from DB or API
 async function loadUserAttestations(userId: string): Promise<any> {
   let state_registration = null;
@@ -96,6 +96,7 @@ async function initializeAttestations(
 
   return { messages: [...filteredMessages, attestationMessage] };
 }
+*/
 
 // 🧠 LLM Node: Call your model with system prompt + messages
 async function callModel(
@@ -130,11 +131,12 @@ function routeModelOutput(state: typeof MessagesAnnotation.State): string {
 
 // 🧠 Create the Graph
 const workflow = new StateGraph(MessagesAnnotation, ConfigurationSchema)
-  .addNode("initialize", initializeAttestations)
+  //.addNode("initialize", initializeAttestations)
   .addNode("callModel", callModel)
   .addNode("tools", new ToolNode(TOOLS))
-  .addEdge("__start__", "initialize")
-  .addEdge("initialize", "callModel")
+  //.addEdge("__start__", "initialize")
+  //.addEdge("initialize", "callModel")
+  .addEdge("__start__", "callModel")
   .addConditionalEdges("callModel", routeModelOutput)
   .addEdge("tools", "callModel");
 

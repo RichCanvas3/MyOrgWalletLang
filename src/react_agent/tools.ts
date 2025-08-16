@@ -159,6 +159,20 @@ const ensRegistrationTool = tool(
   }
 );
 
+const ensSubdomainVerificationSchema = z.object({
+  subdomain: z.string(),
+});
+const ensSubdomainRegistrationTool = tool(
+  async (input): Promise<string> => {
+    return 'ens_verification';
+  },
+  {
+    name: "ens_subdomain_registration",
+    description: 'register an ens subdomain',
+    schema: ensSubdomainVerificationSchema,
+  }
+);
+
 const insuranceSchema = z.object({
   insurance: z.string(),
 });

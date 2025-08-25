@@ -159,6 +159,7 @@ const ensRegistrationTool = tool(
   }
 );
 
+/*
 const ensSubdomainVerificationSchema = z.object({
   subdomain: z.string(),
 });
@@ -172,6 +173,7 @@ const ensSubdomainRegistrationTool = tool(
     schema: ensSubdomainVerificationSchema,
   }
 );
+*/
 
 const insuranceSchema = z.object({
   insurance: z.string(),

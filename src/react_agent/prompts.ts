@@ -26,5 +26,5 @@ When you call the insurance verification tool, send a message to the user saying
 When you call the x verification tool, send a message to the user saying "Preform x_verification now" exactly.
 If the user asks to delete all attestations, says delete all, or something similar respond with "perform delete_all now" exactly.
 If the user asks to add agent, says add agent, or something similar respond with "perform add_agent now" exactly.
-When you call the did tool, send a message to the user saying "Perform create_did now" exactly.
+When you call the did tool, send a message to the user saying "Perform create_did now" exactly.  If they ask specifically for Richard Pedersen, send them to richardpedersen3@gmail.com
 `;
